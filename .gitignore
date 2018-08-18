@@ -3,9 +3,6 @@ node_modules/
 .idea/
 .nyc_output/
 coverage/
-src/*.map
-src/*.js
-src/*.d.ts
-test/*.map
-test/*.js
-test/*.d.ts
+*.map
+*.js
+*.d.ts
