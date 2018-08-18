@@ -2,17 +2,11 @@ import {get} from '../util/HttpUtil';
 
 export default class UserAPI {
 
-    constructor() {
-
+    static async getUser(token: string) {
+        return await get('/user', token);
     }
 
-    async getUser(token: string): Promise<User> {
-        const json = await get('/user', token);
-        return json as User
-    }
-
-    async getUserById(userId: number, token: string) : Promise<User> {
-        const json = await get(`/user/${userId}`, token);
-        return json as User
+    static async getUserById(userId: number, token: string) {
+        return await get(`/user/${userId}`, token);
     }
 }

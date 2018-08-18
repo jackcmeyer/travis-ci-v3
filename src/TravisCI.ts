@@ -28,10 +28,10 @@ export default class TravisCI {
      * @param userId optional userId
      */
     async user(userId?: number) : Promise<User> {
-        if(userId) {
-            return this.userAPI.getUserById(userId, this.getToken());
+        if (userId) {
+            return await UserAPI.getUserById(userId, this.getToken()) as User;
         } else {
-            return this.userAPI.getUser(this.getToken());
+            return await UserAPI.getUser(this.getToken()) as User;
         }
     }
 
