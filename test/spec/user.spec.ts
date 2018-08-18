@@ -1,10 +1,10 @@
-import TravisCI from '../src';
+import TravisCI from '../../src/index';
 import {expect} from 'chai';
 import * as nock from 'nock';
 import * as fs from 'fs';
 import 'mocha';
 
-describe('TravisCI', () => {
+describe('/user', () => {
 
     before(() => {
         // @ts-ignore
@@ -15,7 +15,7 @@ describe('TravisCI', () => {
                 'User-Agent': 'Travis CI Wrapper',
                 'accept-encoding': 'gzip, deflate'
             }
-        }).get('/user').reply(200, JSON.parse(fs.readFileSync('test/user.json').toString()));
+        }).get('/user').reply(200, JSON.parse(fs.readFileSync('test/spec/user.json').toString()));
 
         // @ts-ignore
         nock('https://api.travis-ci.org', {
@@ -25,10 +25,10 @@ describe('TravisCI', () => {
                 'User-Agent': 'Travis CI Wrapper',
                 'accept-encoding': 'gzip, deflate'
             }
-        }).get('/user/1').reply(200, JSON.parse(fs.readFileSync('test/user.json').toString()));
+        }).get('/user/1').reply(200, JSON.parse(fs.readFileSync('test/spec/user.json').toString()));
     });
 
-    it('GET /user.json/:id', (done) => {
+    it('GET /user', (done) => {
         const travisCI = new TravisCI();
         travisCI.authenticate("token");
         travisCI.user().then(user => {
@@ -38,7 +38,7 @@ describe('TravisCI', () => {
         });
     });
 
-    it('GET /user.json', (done) => {
+    it('GET /user/:id', (done) => {
         const travisCI = new TravisCI();
         travisCI.authenticate("token");
         travisCI.user(1).then(user => {
