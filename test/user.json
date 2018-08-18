@@ -1,0 +1,17 @@
+{
+  "@type":           "user",
+  "@href":           "/user/1",
+  "@representation": "standard",
+  "@permissions":    {
+    "read":          true,
+    "sync":          true
+  },
+  "id":              1,
+  "login":           "testlogin",
+  "name":            "Test Login",
+  "github_id":       1,
+  "avatar_url":      "https://avatars3.githubusercontent.com/u/1?v=4",
+  "education":       true,
+  "is_syncing":      false,
+  "synced_at":       "2018-08-17T01:50:55Z"
+}

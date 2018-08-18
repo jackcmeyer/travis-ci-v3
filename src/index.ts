@@ -1,5 +1,3 @@
-export function hello() {
-  return 'Hello, World';
-}
+import TravisCI from "./TravisCI";
 
-export default hello;
+export default TravisCI;
