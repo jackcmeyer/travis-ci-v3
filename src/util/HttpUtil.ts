@@ -4,13 +4,18 @@ const travisUrl = "https://api.travis-ci.org";
 
 
 export async function get(uri: string, token: string) {
-    const response = await buildGetRequest(uri, token);
-    return JSON.parse(response.body);
+    try {
+        const response = await buildGetRequest(uri, token);
+        return JSON.parse(response.body);
+    } catch (error) {
+        throw new Error(error.response.body.error_message);
+    }
 }
 
 function buildGetRequest(uri: string, token: string) {
-    const travis = got.extend({
+    const api = got.extend({
         baseUrl: travisUrl,
+
         headers: {
             'Authorization': 'token ' + token,
             'Travis-API-Version': 3,
@@ -18,5 +23,5 @@ function buildGetRequest(uri: string, token: string) {
         }
     });
 
-    return travis.get(uri);
+    return api.get(uri);
 }
